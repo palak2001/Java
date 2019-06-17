@@ -2,9 +2,9 @@ public class Parent
 {
     //Declaring the variables to be used in class
     //Attributes
-    int id;
-    int item1;
-    int item2;
+    protected int id;       //ID can't be added from main but involves te use of the class methods
+    public String item1;       //Attributes declared as public can be accessed or defined from main itself without involving the class methods
+    public String item2;
 
     //Constructor
     Parent()
@@ -28,6 +28,18 @@ public class Parent
         System.out.println("Item1 is item1");
         System.out.println("Item2 is item2");
     }
+
+    //setter
+    void setid(int id)
+    {
+        this.id=id;
+    }
+
+    //Getter: If you directly want to get an id name
+    int getid()
+    {
+        return id;
+    }
 }
 
 //Entension of class
@@ -35,7 +47,7 @@ public class Parent
 public class Child extends Parent
 {
 
-    int item3;
+    String item3;
 
     //Constructor
     Child()
@@ -71,12 +83,20 @@ public class SourceCode
         Parent parent= new Parent();
         System.out.println("parent");
         //Parent is the object and parent is a hashcode or a reference variable that provides the blueprint to the object for how to behave.
-        parent.setParentBehavior(2001,palak,mittal);
+        parent.setParentBehavior(2001,"palak","mittal");
         parent.showParentBehavior();
-        
+
+        Parent.parent2= new Parent();
+        //The below used line will give the error
+        //parent2.id=1997;
+        parent2.id=getid(1997);
+        parent2.item1="vishal";
+        parent2.item2="mittal";
+        parent.showParentBehavior();
+
         //Creating the object : Child
         Child child= new Child();
-        child.setParentBehavior(2001,palak,mittal,wow);
+        child.setParentBehavior(2001,"palak","mittal","wow");
         child.showParentBehavior();
     }
 }
